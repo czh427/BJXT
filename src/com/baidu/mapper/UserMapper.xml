@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	
+<mapper namespace="com.baidu.mapper.UserMapper">
+
+	<resultMap type="com.baidu.entity.Power" id="powerRM">
+		<id column="pid" property="id" javaType="java.lang.Integer"/>
+	</resultMap>
+
+	<select id="getPowerList" resultType="com.baidu.entity.Power">
+		select id,pid,name,url,target from power
+	</select>
+	
+	<select id="getPowerByRid" resultMap="powerRM" parameterType="int">
+		select pid from role_power where rid = ${rid}
+	</select>
+</mapper>
